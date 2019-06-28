@@ -1,17 +1,12 @@
-
 package objetos;
 
-import principal.Framework;
+import principal.ArcadeFramework;
 
-/**
- *
- * @author estel
- */
 public class Raquete {
     private int altura;
     private int largura;
-    private int x_pos;
-    private int y_pos;
+    public int x_pos;
+    public int y_pos;
     private int velocidade;
     
     public int getAltura() {
@@ -31,17 +26,17 @@ public class Raquete {
     }
     
     /*A string r diz se é a raqueta da esquerda ou a da direita */
-    public Raquete(String r) {
+    public Raquete(String r, int tamanho) {
         velocidade = 10;
-        altura = 150;
+        altura = tamanho;
         largura = 10;
-        y_pos = (Framework.altura / 2) - (altura / 2); //no centro
+        y_pos = (ArcadeFramework.altura / 2) - (altura / 2); //no centro
 
         if(r.equals("esquerda")){
             x_pos = 10;
         }
         if(r.equals("direita")){
-            x_pos = Framework.largura - 25;
+            x_pos = ArcadeFramework.largura - 25;
         }
     }
 
@@ -51,7 +46,7 @@ public class Raquete {
     }
 
     public void moveBaixo(){
-        if(y_pos < (Framework.altura - altura))
+        if(y_pos < (ArcadeFramework.altura - altura))
             y_pos += velocidade;
     }
 }

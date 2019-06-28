@@ -1,6 +1,6 @@
 package objetos;
 
-import principal.Framework;
+import principal.ArcadeFramework;
 
 public class Bola {
     public int x_pos;
@@ -13,13 +13,14 @@ public class Bola {
 
 
     
-    public Bola (int x_vel, int y_vel, int diametro, int x_aceleracao, int y_aceleracao){
-        this.x_pos = Framework.largura/2;
-        this.y_pos = Framework.altura/2;
+    public Bola (int x_vel, int y_vel, int x_aceleracao, int y_aceleracao){
+        this.x_pos = ArcadeFramework.largura/2;
+        this.y_pos = ArcadeFramework.altura/2;
         this.x_vel = x_vel;
         this.y_vel = y_vel;
         this.x_aceleracao = x_aceleracao;
         this.y_aceleracao = y_aceleracao;
+        this.diametro = 15;
     }
     
     public void movimento(){
