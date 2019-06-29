@@ -1,6 +1,5 @@
 package principal;
 
-import jogos.*;
 import javax.swing.*;
 import java.awt.*;  
 import java.awt.event.*; 
@@ -12,7 +11,6 @@ public class ArcadeFramework extends JFrame {
   
     private JPanel contentPane;
     
-
     public ArcadeFramework() {
         JFrame janela = new JFrame("A R C A D E   1 9 7 7");    
         janela.setVisible(true);
@@ -90,6 +88,7 @@ public class ArcadeFramework extends JFrame {
                 String velocidade = comboBox_3.getSelectedItem().toString();
                 janela.dispose();
                 ArcadeInicializador novoJogo = new ArcadeInicializador(modo, tipo,  dificuldade, velocidade);
+
             }
         });  
 
@@ -101,9 +100,7 @@ public class ArcadeFramework extends JFrame {
             //@Override
             public void run() {
                 ArcadeFramework janela = new ArcadeFramework();
-                
-                
-                
+   
             }
         });
     }

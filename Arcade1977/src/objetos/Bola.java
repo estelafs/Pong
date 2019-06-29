@@ -1,6 +1,7 @@
 package objetos;
 
 import principal.ArcadeFramework;
+import java.util.Random;
 
 public class Bola {
     public int x_pos;
@@ -8,25 +9,20 @@ public class Bola {
     public int x_vel;
     public int y_vel;
     public int diametro;
-    public int x_aceleracao;
-    public int y_aceleracao;
+    public int aceleracao;
 
-
-    
-    public Bola (int x_vel, int y_vel, int x_aceleracao, int y_aceleracao){
+    public Bola (int x_vel, int y_vel, int aceleracao){
         this.x_pos = ArcadeFramework.largura/2;
         this.y_pos = ArcadeFramework.altura/2;
         this.x_vel = x_vel;
         this.y_vel = y_vel;
-        this.x_aceleracao = x_aceleracao;
-        this.y_aceleracao = y_aceleracao;
-        this.diametro = 15;
+        this.aceleracao = aceleracao;
+        this.diametro = 20;
     }
     
     public void movimento(){
         x_pos += x_vel;
-        y_pos += y_vel;
-                 
+        y_pos += y_vel;       
     }
     
     public int getX_pos() {
@@ -42,11 +38,28 @@ public class Bola {
     }
 
     public void revVelocidadeX(){
-        x_vel = -x_vel;
+        acelera();
+        x_vel = -x_vel; 
     }
 
     public void revVelocidadeY(){
+        acelera();
         y_vel = -y_vel;
+    }
+    
+    public void acelera(){
+        Random aleatorio = new Random();
+        int probabilidade = aleatorio.nextInt(10);
+        if (y_vel<=8 && x_vel<8 && aceleracao == 1 && probabilidade == 0){
+            if (y_vel > 0)
+                y_vel +=1;
+            else if (y_vel<0)
+                y_vel -= 1;
+            if (x_vel > 0)
+                x_vel +=1;
+            else if (x_vel<0)
+                x_vel -= 1;
+        }
     }
 
     public void setX_pos(int x_pos) {
@@ -57,7 +70,4 @@ public class Bola {
         this.y_pos = y_pos;
     }
     
-    
-
-
 }

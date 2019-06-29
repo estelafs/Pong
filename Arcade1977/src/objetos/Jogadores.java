@@ -25,7 +25,7 @@ public class Jogadores {
         return y_pos;
     }
     
-    /*A string r diz se é o jogador da esquerda ou o da direita */
+    //A string r diz se é o jogador da esquerda ou o da direita
     public Jogadores(String j, int y) {
         velocidade = 3;
         altura = 50;

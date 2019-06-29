@@ -2,19 +2,14 @@ package jogos;
 
 import java.awt.*;
 import java.awt.event.*;
-//import java.awt.event.ActionListener;
-//import java.awt.event.KeyEvent;
-//import java.awt.event.KeyListener;
 import javax.swing.*;
-//import javax.swing.Timer;
 import objetos.*;
 import principal.ArcadeFramework;
 
-
 public abstract class JogoPainel extends JPanel implements ActionListener,KeyListener {
     protected Bola bola;
-    protected Raquete r_esq;
-    protected  Raquete r_dir;
+    protected Raquete raquete_esq;
+    protected Raquete raquete_dir;
     protected Timer timer;
     protected int DELAY = 10;
         
@@ -24,11 +19,14 @@ public abstract class JogoPainel extends JPanel implements ActionListener,KeyLis
     protected int dir_cima = 2;
     protected int dir_baixo = 3;
     
-    public JogoPainel(int Rtamanho, int Bx_vel, int By_vel, int Bx_aceleracao, int By_aceleracao) {
+    public JogoPainel(String modo, int Rtamanho, int Bx_vel, int By_vel, int aceleracao) {
         setBackground(Color.BLACK);
-        bola = new Bola(Bx_vel, By_vel,Bx_aceleracao, By_aceleracao);
-        r_esq = new Raquete("esquerda", Rtamanho);
-        r_dir = new Raquete("direita", Rtamanho);
+        bola = new Bola(Bx_vel, By_vel,aceleracao);
+        raquete_esq = new Raquete("esquerda", Rtamanho);
+        raquete_dir = new Raquete("direita", Rtamanho);
+              
+        if (modo == "Treino")
+            raquete_dir.alteraTreino();
         
         addKeyListener(this);
         setFocusable(true);
@@ -41,25 +39,32 @@ public abstract class JogoPainel extends JPanel implements ActionListener,KeyLis
     //@Override
     public void actionPerformed(ActionEvent e) {
         bola.movimento();
-        cechaColisao();
-        if (chaves[esq_cima]) r_esq.moveCima();
-        if (chaves[esq_baixo]) r_esq.moveBaixo();
-        if (chaves[dir_cima]) r_dir.moveCima();
-        if (chaves[dir_baixo]) r_dir.moveBaixo();
+        checaColisao();
+        if (raquete_dir.getModo() == "Treino"){
+            if(chaves[esq_cima]) raquete_esq.moveCima();
+            if(chaves[esq_baixo]) raquete_esq.moveBaixo();
+            setY_pos(raquete_dir);
+        }
+        else {
+            if(chaves[esq_cima]) raquete_esq.moveCima();
+            if(chaves[esq_baixo]) raquete_esq.moveBaixo();
+            if(chaves[dir_cima]) raquete_dir.moveCima();
+            if(chaves[dir_baixo]) raquete_dir.moveBaixo();
+        }
         repaint();
     }
 
-    protected void cechaColisao() {
-        if (bola.getX_pos() < (r_esq.getX_pos() + r_esq.getLargura())) {
-            if ((bola.getY_pos() > r_esq.getY_pos()) && (bola.getY_pos() < (r_esq.getY_pos() + r_esq.getAltura()))) {
+    protected void checaColisao() {
+        if (bola.getX_pos() < (raquete_esq.getX_pos() + raquete_esq.getLargura())) {
+            if ((bola.getY_pos() > raquete_esq.getY_pos()) && (bola.getY_pos() < (raquete_esq.getY_pos() + raquete_esq.getAltura()))) {
                 bola.revVelocidadeX();
             } else {
                 bola.setX_pos(ArcadeFramework.largura / 2);
                 bola.setY_pos(ArcadeFramework.altura / 2);
             }
         }
-        if (bola.getX_pos() > (r_dir.getX_pos() - r_dir.getLargura())) {
-            if ((bola.getY_pos() > r_dir.getY_pos()) && (bola.getY_pos() < (r_dir.getY_pos() + r_dir.getAltura()))) {
+        if (bola.getX_pos() > (raquete_dir.getX_pos() - raquete_dir.getLargura())) {
+            if ((bola.getY_pos() > raquete_dir.getY_pos()) && (bola.getY_pos() < (raquete_dir.getY_pos() + raquete_dir.getAltura()))) {
                 bola.revVelocidadeX();
             } else {
                 bola.setX_pos(ArcadeFramework.largura / 2);
@@ -71,7 +76,10 @@ public abstract class JogoPainel extends JPanel implements ActionListener,KeyLis
         }
 
     }
-
+    public void setY_pos(Raquete r) {
+        r.y_pos = bola.getY_pos() - 20;
+    }
+    
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
@@ -82,8 +90,8 @@ public abstract class JogoPainel extends JPanel implements ActionListener,KeyLis
 
     protected void desenhaRaquete(Graphics g) {
         g.setColor(Color.WHITE);
-        g.fillRect(r_esq.getX_pos(), r_esq.getY_pos(), r_esq.getLargura(), r_esq.getAltura());
-        g.fillRect(r_dir.getX_pos(), r_dir.getY_pos(), r_dir.getLargura(), r_dir.getAltura());
+        g.fillRect(raquete_esq.getX_pos(), raquete_esq.getY_pos(), raquete_esq.getLargura(), raquete_esq.getAltura());
+        g.fillRect(raquete_dir.getX_pos(), raquete_dir.getY_pos(), raquete_dir.getLargura(), raquete_dir.getAltura());
         Toolkit.getDefaultToolkit().sync();
     }
 
@@ -95,7 +103,6 @@ public abstract class JogoPainel extends JPanel implements ActionListener,KeyLis
 
     //@Override
     public void keyTyped(KeyEvent keyEvent) {
-
     }
 
     //@Override
