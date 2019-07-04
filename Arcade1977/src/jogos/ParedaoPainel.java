@@ -27,8 +27,8 @@ public class ParedaoPainel extends JogoPainel {
             if ((bola.getY_pos() > raquete_esq.getY_pos()) && (bola.getY_pos() < (raquete_esq.getY_pos() + raquete_esq.getAltura()))) {
                 bola.revVelocidadeX();
             } else {
-                bola.setX_pos(ArcadeFramework.largura / 2);
-                bola.setY_pos(ArcadeFramework.altura / 2);
+                bola.setX_pos(Arcade1977.largura / 2);
+                bola.setY_pos(Arcade1977.altura / 2);
             }
         }
         if (bola.getX_pos() > (raquete_dir.getX_pos() - raquete_dir.getLargura())) {
@@ -38,7 +38,7 @@ public class ParedaoPainel extends JogoPainel {
                 bola.revVelocidadeX();
             }
 
-        } else if (bola.getY_pos() < 0 || bola.getY_pos() > ArcadeFramework.altura) {
+        } else if (bola.getY_pos() < 0 || bola.getY_pos() > Arcade1977.altura) {
             bola.revVelocidadeY();
         }
     }

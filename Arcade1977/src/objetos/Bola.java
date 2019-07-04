@@ -1,6 +1,6 @@
 package objetos;
 
-import principal.ArcadeFramework;
+import principal.Arcade1977;
 import java.util.Random;
 
 public class Bola {
@@ -12,8 +12,8 @@ public class Bola {
     public int aceleracao;
 
     public Bola (int x_vel, int y_vel, int aceleracao){
-        this.x_pos = ArcadeFramework.largura/2;
-        this.y_pos = ArcadeFramework.altura/2;
+        this.x_pos = Arcade1977.largura/2;
+        this.y_pos = Arcade1977.altura/2;
         this.x_vel = x_vel;
         this.y_vel = y_vel;
         this.aceleracao = aceleracao;

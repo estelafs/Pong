@@ -78,14 +78,14 @@ public class FutebolPainel extends JogoPainel {
             if ((bola.getY_pos() > raquete_esq.getY_pos()) && (bola.getY_pos() < (raquete_esq.getY_pos() + raquete_esq.getAltura()))) {
                 bola.revVelocidadeX();
             } else {
-                if ((bola.getX_pos() <= (ArcadeFramework.largura - 25) && (bola.getY_pos() >= 10 && bola.getY_pos() <= 200))
-                        || (bola.getX_pos() <= (ArcadeFramework.largura - 25) && (bola.getY_pos() >= 401 && bola.getY_pos() <= 600))
+                if ((bola.getX_pos() <= (Arcade1977.largura - 25) && (bola.getY_pos() >= 10 && bola.getY_pos() <= 200))
+                        || (bola.getX_pos() <= (Arcade1977.largura - 25) && (bola.getY_pos() >= 401 && bola.getY_pos() <= 600))
                         || (bola.getX_pos() <= 10 && (bola.getY_pos() >= 10 && bola.getY_pos() <= 200))
                         || (bola.getX_pos() <= 10 && (bola.getY_pos() >= 410 && bola.getY_pos() <= 600))) {
                     bola.revVelocidadeX();
                 } else {
-                    bola.setX_pos(ArcadeFramework.largura / 2);
-                    bola.setY_pos(ArcadeFramework.altura / 2);
+                    bola.setX_pos(Arcade1977.largura / 2);
+                    bola.setY_pos(Arcade1977.altura / 2);
                 }
             }
         }
@@ -93,14 +93,14 @@ public class FutebolPainel extends JogoPainel {
             if ((bola.getY_pos() > raquete_dir.getY_pos()) && (bola.getY_pos() < (raquete_dir.getY_pos() + raquete_dir.getAltura()))) {
                 bola.revVelocidadeX();
             } else {
-                if ((bola.getX_pos() <= (ArcadeFramework.largura - 25) && (bola.getY_pos() >= 10 && bola.getY_pos() <= 200))
-                        || (bola.getX_pos() <= (ArcadeFramework.largura - 25) && (bola.getY_pos() >= 401 && bola.getY_pos() <= 600))
+                if ((bola.getX_pos() <= (Arcade1977.largura - 25) && (bola.getY_pos() >= 10 && bola.getY_pos() <= 200))
+                        || (bola.getX_pos() <= (Arcade1977.largura - 25) && (bola.getY_pos() >= 401 && bola.getY_pos() <= 600))
                         || (bola.getX_pos() <= 10 && (bola.getY_pos() >= 10 && bola.getY_pos() <= 200))
                         || (bola.getX_pos() <= 10 && (bola.getY_pos() >= 410 && bola.getY_pos() <= 600))) {
                     bola.revVelocidadeX();
                 } else {
-                    bola.setX_pos(ArcadeFramework.largura / 2);
-                    bola.setY_pos(ArcadeFramework.altura / 2);
+                    bola.setX_pos(Arcade1977.largura / 2);
+                    bola.setY_pos(Arcade1977.altura / 2);
                 }
             }
         }
@@ -142,7 +142,7 @@ public class FutebolPainel extends JogoPainel {
             }
         }
 //---------------------------------------------------------------
-        if (bola.getY_pos() < 0 || bola.getY_pos() > ArcadeFramework.altura - 35) {
+        if (bola.getY_pos() < 0 || bola.getY_pos() > Arcade1977.altura - 35) {
             bola.revVelocidadeY();
 
         }
@@ -180,8 +180,8 @@ public class FutebolPainel extends JogoPainel {
         g.fillRect(10, 410, 10, 200);
 
         //Limites da direita
-        g.fillRect(ArcadeFramework.largura - 25, 2, 10, 200);
-        g.fillRect(ArcadeFramework.largura - 25, 410, 10, 200);
+        g.fillRect(Arcade1977.largura - 25, 2, 10, 200);
+        g.fillRect(Arcade1977.largura - 25, 410, 10, 200);
 
         Toolkit.getDefaultToolkit().sync();
     }

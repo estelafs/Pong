@@ -5,13 +5,13 @@ import java.awt.*;
 import java.awt.event.*; 
 import javax.swing.border.EmptyBorder;
 
-public class ArcadeFramework extends JFrame {
+public class Arcade1977 extends JFrame {
     public static int largura = 800;
     public static int altura = 600;
   
     private JPanel contentPane;
     
-    public ArcadeFramework() {
+    public Arcade1977() {
         JFrame janela = new JFrame("A R C A D E   1 9 7 7");    
         janela.setVisible(true);
         janela.setBackground(Color.MAGENTA);
@@ -99,7 +99,7 @@ public class ArcadeFramework extends JFrame {
         SwingUtilities.invokeLater(new Runnable() {
             //@Override
             public void run() {
-                ArcadeFramework janela = new ArcadeFramework();
+                Arcade1977 janela = new Arcade1977();
    
             }
         });

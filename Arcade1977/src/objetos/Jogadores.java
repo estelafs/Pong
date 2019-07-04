@@ -1,6 +1,6 @@
 package objetos;
 
-import principal.ArcadeFramework;
+import principal.Arcade1977;
 
 public class Jogadores {
     private int altura;

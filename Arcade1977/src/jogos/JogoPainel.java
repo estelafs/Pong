@@ -4,7 +4,7 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 import objetos.*;
-import principal.ArcadeFramework;
+import principal.Arcade1977;
 
 public abstract class JogoPainel extends JPanel implements ActionListener,KeyListener {
     protected Bola bola;
@@ -59,19 +59,19 @@ public abstract class JogoPainel extends JPanel implements ActionListener,KeyLis
             if ((bola.getY_pos() > raquete_esq.getY_pos()) && (bola.getY_pos() < (raquete_esq.getY_pos() + raquete_esq.getAltura()))) {
                 bola.revVelocidadeX();
             } else {
-                bola.setX_pos(ArcadeFramework.largura / 2);
-                bola.setY_pos(ArcadeFramework.altura / 2);
+                bola.setX_pos(Arcade1977.largura / 2);
+                bola.setY_pos(Arcade1977.altura / 2);
             }
         }
         if (bola.getX_pos() > (raquete_dir.getX_pos() - raquete_dir.getLargura())) {
             if ((bola.getY_pos() > raquete_dir.getY_pos()) && (bola.getY_pos() < (raquete_dir.getY_pos() + raquete_dir.getAltura()))) {
                 bola.revVelocidadeX();
             } else {
-                bola.setX_pos(ArcadeFramework.largura / 2);
-                bola.setY_pos(ArcadeFramework.altura / 2);
+                bola.setX_pos(Arcade1977.largura / 2);
+                bola.setY_pos(Arcade1977.altura / 2);
             }
 
-        } else if (bola.getY_pos() < 0 || bola.getY_pos() > ArcadeFramework.altura) {
+        } else if (bola.getY_pos() < 0 || bola.getY_pos() > Arcade1977.altura) {
             bola.revVelocidadeY();
         }
 

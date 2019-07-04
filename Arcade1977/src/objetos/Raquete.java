@@ -1,6 +1,6 @@
 package objetos;
 
-import principal.ArcadeFramework;
+import principal.Arcade1977;
 
 public class Raquete {
     private int altura;
@@ -35,13 +35,13 @@ public class Raquete {
         velocidade = 10;
         altura = tamanho;
         largura = 10;
-        y_pos = (ArcadeFramework.altura / 2) - (altura / 2); //no centro
+        y_pos = (Arcade1977.altura / 2) - (altura / 2); //no centro
 
         if(r.equals("esquerda")){
             x_pos = 10;
         }
         if(r.equals("direita")){
-            x_pos = ArcadeFramework.largura - 25;
+            x_pos = Arcade1977.largura - 25;
         }
     }
 
@@ -51,7 +51,7 @@ public class Raquete {
     }
 
     public void moveBaixo(){
-        if(y_pos < (ArcadeFramework.altura - altura))
+        if(y_pos < (Arcade1977.altura - altura))
             y_pos += velocidade;
     }
 
